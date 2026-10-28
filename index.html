@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform with Comments</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { background: #2c3e50; color: white; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #2980b9; }
+        .btn-danger { background: #e74c3c; }
+        .btn-danger:hover { background: #c0392b; }
+        .post-title { margin-top: 0; color: #2c3e50; }
+        .comment-section { background: #f9f9f9; padding: 15px; border-radius: 6px; margin-top: 15px; }
+        .comment { border-bottom: 1px solid #ddd; padding: 8px 0; }
+        .comment:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Blog Platform</h1>
+        <p>Create posts, comment, and share thoughts</p>
+    </header>
+
+    <!-- User Auth Section -->
+    <div class="card" id="auth-section">
+        <h2>User Login / Register</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="loginUser()">Login</button>
+    </div>
+
+    <!-- Create Post Section -->
+    <div class="card">
+        <h2>Create a New Post</h2>
+        <input type="text" id="post-title-input" placeholder="Post Title">
+        <textarea id="post-content-input" rows="4" placeholder="Write your post content here..."></textarea>
+        <button onclick="createPost()">Publish Post</button>
+    </div>
+
+    <!-- Posts Container -->
+    <h2>Recent Blog Posts</h2>
+    <div id="posts-container">
+        <!-- Sample Blog Post -->
+        <div class="card">
+            <h3 class="post-title">Getting Started with Web Development</h3>
+            <p>Web development involves building and maintaining websites. It includes web design, web publishing, and database management.</p>
+            <button onclick="alert('Edit feature clicked')">Edit</button>
+            <button class="btn-danger" onclick="alert('Post deleted')">Delete</button>
+
+            <!-- Comments -->
+            <div class="comment-section">
+                <h4>Comments</h4>
+                <div class="comment">
+                    <strong>Rahul:</strong> Great article! Very informative.
+                </div>
+                <div class="comment">
+                    <strong>Priya:</strong> Looking forward to learning more about RESTful APIs.
+                </div>
+                <input type="text" placeholder="Write a comment..." style="margin-top: 10px;">
+                <button onclick="alert('Comment added!')">Add Comment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function loginUser() {
+        const name = document.getElementById('username').value;
+        if(name) {
+            alert('Logged in as ' + name);
+        } else {
+            alert('Please enter a username');
+        }
+    }
+
+    function createPost() {
+        const title = document.getElementById('post-title-input').value;
+        const content = document.getElementById('post-content-input').value;
+        if(title && content) {
+            alert('Post created successfully!');
+            document.getElementById('post-title-input').value = '';
+            document.getElementById('post-content-input').value = '';
+        } else {
+            alert('Please fill in both title and content.');
+        }
+    }
+</script>
+
+</body>
+</html>
